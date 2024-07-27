@@ -1,0 +1,108 @@
+{
+  "Routes": [
+    //Book
+    {
+      //api chuẩn bên backend
+      //Viết như này có thể dùng chung cho nhiều endpoint
+      "DownstreamPathTemplate": "/api/book/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          //port trong file launchSetting.json
+          "Port": 44385
+        }
+      ],
+      //api tạo ra để dùng với client
+      "UpstreamPathTemplate": "/api/book/{url}",
+      //httpMehtod được chấp nhận
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
+    },
+
+    ////GetBookById
+    //{
+    //  "DownstreamPathTemplate": "/GetBook/{id}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44385
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/GetBookById/{id}",
+    //  "UpstreamHttpMethod": [ "GET" ],
+    //  "Key": "book-info"
+    //},
+    ////AddBook
+    //{
+    //  "DownstreamPathTemplate": "/AddBook",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44385
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/CreateBook",
+    //  "UpstreamHttpMethod": [ "POST" ]
+    //},
+    ////DeleteBook
+    //{
+    //  "DownstreamPathTemplate": "/DeleteBook/{id}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44385
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/DeleteBook/{id}",
+    //  "UpstreamHttpMethod": [ "DELETE" ]
+    //},
+
+
+    //Author
+    {
+      "DownstreamPathTemplate": "/api/author/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44368
+        }
+      ],
+      "UpstreamPathTemplate": "/api/author/{url}",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+
+    //{
+    //  "DownstreamPathTemplate": "/GetAuthor/{id}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44368
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/GetAuthorById/{id}",
+    //  "UpstreamHttpMethod": [ "GET" ],
+    //  "Key": "author-info"
+    //}
+  ],
+  //Nếu muốn lấy thông tin của api1 và api2 cùng 1 lúc 
+  //Chỉ hoạt động với phương thức GET
+  //"Aggregates": [
+  //  {
+  //    "RouteKeys": [
+  //      "book-info",
+  //      "author-info"
+  //    ],
+  //    "UpstreamPathTemplate": "/book/author/{id}",
+  //  }
+  //],
+  //endpoint của ApiGateway
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44398"
+  }
+
+}
